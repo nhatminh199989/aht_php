@@ -51,11 +51,11 @@ class ResourceModel implements ResourceModelInterface
         }
     }
 
-    public function delete($model)
+    public function delete($id)
     {
         $sql = "DELETE FROM {$this->table} where id =:id";
         $req = Database::getBdd()->prepare($sql);
-        return $req->execute([':id' => $model->getId()]);
+        return $req->execute([':id' => $id]);
     }
 
     public function get($id)

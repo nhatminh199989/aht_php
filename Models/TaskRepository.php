@@ -20,8 +20,8 @@ class TaskRepository
         return $this->taskRes->get($id);
     }
 
-    public function delete($model){
-        return $this->taskRes->delete($model);
+    public function delete($id){
+        return $this->taskRes->delete($id);
     }
 
     public function add($model){

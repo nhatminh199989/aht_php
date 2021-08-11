@@ -17,8 +17,7 @@ class TasksController extends Controller
 
     public function index()
     {
-        $tasks = new TaskModel();
-        $d['tasks'] = $this->Repo->getAll($tasks);
+        $d['tasks'] = $this->Repo->getAll();
         $this->set($d);
         $this->render("index");
     }
@@ -59,9 +58,7 @@ class TasksController extends Controller
 
     public function delete($id)
     {
-        $task = new TaskModel();
-        $task->setId($id);
-        if ($this->Repo->delete($task)) {
+        if ($this->Repo->delete($id)) {
             header("Location: " . WEBROOT . "tasks/index");
         }
     }
