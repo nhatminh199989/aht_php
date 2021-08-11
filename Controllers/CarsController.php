@@ -23,6 +23,19 @@ class CarsController extends Controller
         $this->render("index");
     }
 
+    public function create(){
+        extract($_POST);
+        if (isset($brand)) {
+            $car = new CarsModel();
+            $car->setBrand($brand);
+            $car->setType($type);
+            if ($this->Rep->add($car)) {
+                header("Location: " . WEBROOT . "cars/index");
+            }
+        }
+        $this->render("create");
+    }
+
     public function edit($id)
     {
         //Check submit data
@@ -32,7 +45,7 @@ class CarsController extends Controller
             $car->setId($id);
             $car->setBrand($brand);
             $car->setType($type);
-            if ($this->Repo->update($task)) {
+            if ($this->Rep->update($car)) {
                 header("Location: " . WEBROOT . "cars/index");
             }
         }
@@ -41,5 +54,9 @@ class CarsController extends Controller
         $this->render("edit");
     }
 
-    public function delete(){}
+    public function delete($id){
+        if ($this->Rep->delete($id)) {
+            header("Location: " . WEBROOT . "cars/index");
+        }
+    }
 }

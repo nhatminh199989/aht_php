@@ -30,7 +30,7 @@ class TasksController extends Controller
             $task->setTitle($title);
             $task->setDescription($description);
 
-            if ($this->Repo->update($task)) {
+            if ($this->Repo->add($task)) {
                 header("Location: " . WEBROOT . "tasks/index");
             }
         }
@@ -39,19 +39,17 @@ class TasksController extends Controller
 
     public function edit($id)
     {
-        $task = new TaskModel();
         extract($_POST);
-        $d["task"] = $this->Repo->get($id);
-
         if (isset($title)) {
+            $task = new TaskModel();
             $task->setId($id);
             $task->setTitle($title);
             $task->setDescription($description);
-
             if ($this->Repo->update($task)) {
                 header("Location: " . WEBROOT . "tasks/index");
             }
         }
+        $d["task"] = $this->Repo->get($id);
         $this->set($d);
         $this->render("edit");
     }
