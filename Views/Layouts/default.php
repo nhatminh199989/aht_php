@@ -34,6 +34,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/mvc/tasks/index">Task<span class="sr-only">(current)</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/mvc/cars/index">Car<span class="sr-only">(current)</span></a>
+            </li>
         </ul>
     </div>
 </nav>
